@@ -38,7 +38,7 @@ module Foobara
 
         def generate_file_contents
           # TODO: just pass this in as the inputs instead of the domain??
-          self.paths_to_source_code = run_subdomain!(GenerateDomain, domain_config.attributes)
+          self.paths_to_source_code = run_subcommand!(GenerateDomain, domain_config.attributes)
         end
 
         def run_post_generation_tasks

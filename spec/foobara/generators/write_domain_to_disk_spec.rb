@@ -15,7 +15,7 @@ RSpec.describe Foobara::Generators::DomainGenerator::WriteDomainToDisk do
       description: "whatever"
     }
   end
-  let(:domain_name) { "SomeOrg::SomeDomain::SomeDomain" }
+  let(:domain_name) { "SomeOrg::SomeDomain" }
   let(:output_directory) { "#{__dir__}/../../../tmp/domain_test_suite_output" }
 
   before do
@@ -30,7 +30,7 @@ RSpec.describe Foobara::Generators::DomainGenerator::WriteDomainToDisk do
     it "contains base files" do
       expect(outcome).to be_success
 
-      expect(domain.paths_to_source_code.keys).to include("src/some_org/some_domain/some_domain.rb")
+      expect(domain.paths_to_source_code.keys).to include("src/some_org/some_domain.rb")
     end
   end
 

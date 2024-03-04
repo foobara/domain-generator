@@ -8,7 +8,6 @@ module Foobara
           domain_name :string, :required
           description :string, :allow_nil
           organization_name :string, :allow_nil
-          domain_name :string, :allow_nil
           full_module_name :string
         end
 
@@ -20,15 +19,12 @@ module Foobara
           domain_name = attributes[:domain_name]
           description = attributes[:description]
           organization_name = attributes[:organization_name]
-          domain_name = attributes[:domain_name]
 
-          if organization_name.nil? && domain_name.nil? && full_module_name.nil?
+          if organization_name.nil? && full_module_name.nil?
             full_module_name = domain_name
             module_path = full_module_name.split("::")
 
-            *prefix, domain_name = module_path
-
-            *organization_parts, domain_name = prefix
+            *organization_parts, domain_name = module_path
 
             unless organization_parts.empty?
               organization_name = organization_parts.join("::")
@@ -40,7 +36,6 @@ module Foobara
               domain_name:,
               description:,
               organization_name:,
-              domain_name:,
               full_module_name:
             },
             options
