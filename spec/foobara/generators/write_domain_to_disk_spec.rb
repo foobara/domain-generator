@@ -1,22 +1,22 @@
-RSpec.describe Foobara::Generators::CommandGenerator::WriteCommandToDisk do
-  let(:command) { described_class.new(inputs) }
-  let(:outcome) { command.run }
+RSpec.describe Foobara::Generators::DomainGenerator::WriteDomainToDisk do
+  let(:domain) { described_class.new(inputs) }
+  let(:outcome) { domain.run }
   let(:result) { outcome.result }
   let(:errors) { outcome.errors }
   let(:inputs) do
     {
-      command_config:,
+      domain_config:,
       output_directory:
     }
   end
-  let(:command_config) do
+  let(:domain_config) do
     {
-      command_name:,
+      domain_name:,
       description: "whatever"
     }
   end
-  let(:command_name) { "SomeOrg::SomeDomain::SomeCommand" }
-  let(:output_directory) { "#{__dir__}/../../../tmp/command_test_suite_output" }
+  let(:domain_name) { "SomeOrg::SomeDomain::SomeDomain" }
+  let(:output_directory) { "#{__dir__}/../../../tmp/domain_test_suite_output" }
 
   before do
     # rubocop:disable RSpec/AnyInstance
@@ -30,7 +30,7 @@ RSpec.describe Foobara::Generators::CommandGenerator::WriteCommandToDisk do
     it "contains base files" do
       expect(outcome).to be_success
 
-      expect(command.paths_to_source_code.keys).to include("src/some_org/some_domain/some_command.rb")
+      expect(domain.paths_to_source_code.keys).to include("src/some_org/some_domain/some_domain.rb")
     end
   end
 
@@ -38,13 +38,13 @@ RSpec.describe Foobara::Generators::CommandGenerator::WriteCommandToDisk do
     context "with no output directory" do
       let(:inputs) do
         {
-          command_config:
+          domain_config:
         }
       end
 
       it "writes files to the current directory" do
-        command.cast_and_validate_inputs
-        expect(command.output_directory).to eq(".")
+        domain.cast_and_validate_inputs
+        expect(domain.output_directory).to eq(".")
       end
     end
   end

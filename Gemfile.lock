@@ -34,7 +34,7 @@ GIT
 PATH
   remote: .
   specs:
-    foobara-command-generator (0.0.1)
+    foobara-domain-generator (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -144,7 +144,7 @@ PLATFORMS
 
 DEPENDENCIES
   foobara!
-  foobara-command-generator!
+  foobara-domain-generator!
   foobara-files-generator!
   foobara-rubocop-rules!
   foobara-spec-helpers!

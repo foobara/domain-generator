@@ -2,7 +2,7 @@
 module <%= part %>
 <% end %>
 
-class <%= module_path.last %> < Foobara::Command
+class <%= module_path.last %> < Foobara::Domain
   # class SomeError < RuntimeError
   #   class << self
   #     def context_type_declaration
@@ -15,7 +15,7 @@ class <%= module_path.last %> < Foobara::Command
     # some_input :string, :required, default: "foo"
   end
 
-  # depends_on SomeOtherCommand
+  # depends_on SomeOtherDomain
 
   # possible_error SomeError
 

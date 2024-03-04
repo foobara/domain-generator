@@ -1,14 +1,14 @@
 module Foobara
   module Generators
-    module CommandGenerator
+    module DomainGenerator
       module Generators
-        class CommandGenerator < Foobara::FilesGenerator
+        class DomainGenerator < Foobara::FilesGenerator
           class << self
             def manifest_to_generator_classes(manifest)
               case manifest
-              when CommandConfig
+              when DomainConfig
                 [
-                  Generators::CommandGenerator
+                  Generators::DomainGenerator
                 ]
               else
                 # :nocov:
@@ -19,7 +19,7 @@ module Foobara
           end
 
           def template_path
-            ["src", "command.rb.erb"]
+            ["src", "domain.rb.erb"]
           end
 
           def target_path
@@ -30,7 +30,7 @@ module Foobara
             ["src", *path, file]
           end
 
-          alias command_config relevant_manifest
+          alias domain_config relevant_manifest
 
           def templates_dir
             "#{__dir__}/../templates"
@@ -39,12 +39,12 @@ module Foobara
           # TODO: promote this up to base project
           def ==(other)
             # :nocov:
-            self.class == other.class && command_config == other.command_config
+            self.class == other.class && domain_config == other.domain_config
             # :nocov:
           end
 
           def hash
-            command_config.hash
+            domain_config.hash
           end
         end
       end

@@ -1,19 +1,19 @@
-require_relative "generate_command"
+require_relative "generate_domain"
 
 module Foobara
   module Generators
-    module CommandGenerator
-      class WriteCommandToDisk < Foobara::Generators::WriteGeneratedFilesToDisk
+    module DomainGenerator
+      class WriteDomainToDisk < Foobara::Generators::WriteGeneratedFilesToDisk
         class << self
           def generator_key
-            "command"
+            "domain"
           end
         end
 
-        depends_on GenerateCommand
+        depends_on GenerateDomain
 
         inputs do
-          command_config CommandConfig, :required
+          domain_config DomainConfig, :required
           # TODO: should be able to delete this and inherit it
           output_directory :string
         end
@@ -37,8 +37,8 @@ module Foobara
         end
 
         def generate_file_contents
-          # TODO: just pass this in as the inputs instead of the command??
-          self.paths_to_source_code = run_subcommand!(GenerateCommand, command_config.attributes)
+          # TODO: just pass this in as the inputs instead of the domain??
+          self.paths_to_source_code = run_subdomain!(GenerateDomain, domain_config.attributes)
         end
 
         def run_post_generation_tasks

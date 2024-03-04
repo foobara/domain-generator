@@ -1,16 +1,16 @@
 require "pathname"
 
-require_relative "command_config"
+require_relative "domain_config"
 
 module Foobara
   module Generators
-    module CommandGenerator
-      class GenerateCommand < Foobara::Generators::Generate
+    module DomainGenerator
+      class GenerateDomain < Foobara::Generators::Generate
         class MissingManifestError < RuntimeError; end
 
         possible_error MissingManifestError
 
-        inputs CommandConfig
+        inputs DomainConfig
 
         def execute
           add_initial_elements_to_generate
@@ -25,7 +25,7 @@ module Foobara
         attr_accessor :manifest_data
 
         def base_generator
-          Generators::CommandGenerator
+          Generators::DomainGenerator
         end
 
         # TODO: delegate this to base_generator
@@ -37,11 +37,11 @@ module Foobara
         end
 
         def add_initial_elements_to_generate
-          elements_to_generate << command_config
+          elements_to_generate << domain_config
         end
 
-        def command_config
-          @command_config ||= CommandConfig.new(inputs)
+        def domain_config
+          @domain_config ||= DomainConfig.new(inputs)
         end
       end
     end
