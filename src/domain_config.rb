@@ -31,6 +31,8 @@ module Foobara
             end
           end
 
+          full_module_name ||= [*organization_name, *domain_name].compact.join("::")
+
           super(
             {
               domain_name:,
