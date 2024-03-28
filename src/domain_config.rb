@@ -5,7 +5,7 @@ module Foobara
     module DomainGenerator
       class DomainConfig < Foobara::Model
         attributes do
-          domain_name :string, :required
+          name :string, :required
           description :string, :allow_nil
           organization_name :string, :allow_nil
           full_module_name :string
@@ -16,26 +16,26 @@ module Foobara
         def initialize(attributes = nil, options = {})
           full_module_name = attributes[:full_module_name]
           module_path = full_module_name&.split("::")
-          domain_name = attributes[:domain_name]
+          name = attributes[:name]
           description = attributes[:description]
           organization_name = attributes[:organization_name]
 
           if organization_name.nil? && full_module_name.nil?
-            full_module_name = domain_name
+            full_module_name = name
             module_path = full_module_name.split("::")
 
-            *organization_parts, domain_name = module_path
+            *organization_parts, name = module_path
 
             unless organization_parts.empty?
               organization_name = organization_parts.join("::")
             end
           end
 
-          full_module_name ||= [*organization_name, *domain_name].compact.join("::")
+          full_module_name ||= [*organization_name, *name].compact.join("::")
 
           super(
             {
-              domain_name:,
+              name:,
               description:,
               organization_name:,
               full_module_name:

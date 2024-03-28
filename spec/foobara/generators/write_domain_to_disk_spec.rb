@@ -11,11 +11,11 @@ RSpec.describe Foobara::Generators::DomainGenerator::WriteDomainToDisk do
   end
   let(:domain_config) do
     {
-      domain_name:,
+      name:,
       description: "whatever"
     }
   end
-  let(:domain_name) { "SomeOrg::SomeDomain" }
+  let(:name) { "SomeOrg::SomeDomain" }
   let(:output_directory) { "#{__dir__}/../../../tmp/domain_test_suite_output" }
 
   before do

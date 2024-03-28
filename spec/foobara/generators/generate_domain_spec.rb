@@ -1,9 +1,9 @@
 RSpec.describe Foobara::Generators::DomainGenerator::GenerateDomain do
-  let(:domain_name) { "SomeOrg::SomeDomain" }
+  let(:name) { "SomeOrg::SomeDomain" }
 
   let(:inputs) do
     {
-      domain_name:,
+      name:,
       description: "whatever"
     }
   end
@@ -22,7 +22,7 @@ RSpec.describe Foobara::Generators::DomainGenerator::GenerateDomain do
   context "with all options" do
     let(:inputs) do
       {
-        domain_name: "SomeDomain",
+        name: "SomeDomain",
         description: "whatever",
         organization_name: "SomeOrg",
         full_module_name: "SomeOrg::SomeDomain"
