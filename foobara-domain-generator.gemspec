@@ -1,4 +1,4 @@
-require_relative "src/version"
+require_relative "version"
 
 Gem::Specification.new do |spec|
   spec.name = "foobara-domain-generator"
@@ -20,6 +20,9 @@ Gem::Specification.new do |spec|
     "src/**/*",
     "LICENSE.txt"
   ]
+
+  spec.add_dependency "foobara"
+  spec.add_dependency "foobara-files-generator"
 
   spec.require_paths = ["lib"]
   spec.metadata["rubygems_mfa_required"] = "true"
